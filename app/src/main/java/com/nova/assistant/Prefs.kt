@@ -10,6 +10,7 @@ object Prefs {
     private const val KEY_ONBOARDED = "onboarded"
     private const val KEY_VOICE_ON = "voice_on"
     private const val KEY_BUBBLE_ON = "bubble_on"
+    private const val KEY_API = "api_key"
 
     private fun sp(c: Context) = c.getSharedPreferences(FILE, Context.MODE_PRIVATE)
 
@@ -32,4 +33,9 @@ object Prefs {
     var Context.bubbleOn: Boolean
         get() = sp(this).getBoolean(KEY_BUBBLE_ON, false)
         set(v) { sp(this).edit().putBoolean(KEY_BUBBLE_ON, v).apply() }
+
+    /** Claude API key. Empty = AI brain off, keyword mode only. */
+    var Context.apiKey: String
+        get() = sp(this).getString(KEY_API, "") ?: ""
+        set(v) { sp(this).edit().putString(KEY_API, v).apply() }
 }

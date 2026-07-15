@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.nova.assistant.Prefs.apiKey
 import com.nova.assistant.Prefs.assistantName
 import com.nova.assistant.Prefs.onboarded
 import com.nova.assistant.Prefs.userName
@@ -18,6 +19,11 @@ class OnboardingActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Pre-fill when reopened from Settings
+        binding.userNameInput.setText(userName)
+        if (onboarded) binding.assistantNameInput.setText(assistantName)
+        binding.apiKeyInput.setText(apiKey)
+
         binding.saveButton.setOnClickListener {
             val user = binding.userNameInput.text.toString().trim()
             val assistant = binding.assistantNameInput.text.toString().trim()
@@ -27,7 +33,9 @@ class OnboardingActivity : AppCompatActivity() {
             }
             userName = user
             assistantName = assistant
+            apiKey = binding.apiKeyInput.text.toString().trim()
             onboarded = true
+            AiBrain.clearHistory()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

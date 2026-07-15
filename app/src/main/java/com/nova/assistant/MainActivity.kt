@@ -14,6 +14,7 @@ import android.speech.SpeechRecognizer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.nova.assistant.Prefs.apiKey
 import com.nova.assistant.Prefs.assistantName
 import com.nova.assistant.Prefs.bubbleOn
 import com.nova.assistant.Prefs.onboarded
@@ -59,6 +60,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.enableBubble.setOnClickListener { ensureOverlayThenStartBubble() }
         binding.enableAccessibility.setOnClickListener { openAccessibilitySettings() }
+        binding.settingsButton.setOnClickListener {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+        }
 
         binding.voiceToggle.setOnClickListener {
             voiceOn = !voiceOn; refreshToggleLabels()
@@ -163,10 +167,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleCommand(candidates: List<String>) {
+        // Fast path: simple keyword commands run instantly, offline and free.
         val reply = commands.processAll(candidates)
-        setStatus(reply.spoken)
-        Speaker.say(this, reply.spoken)
-        reply.action?.let { runCatching { startActivity(it) } }
+        if (reply.understood) {
+            setStatus(reply.spoken)
+            Speaker.say(this, reply.spoken)
+            reply.action?.let { runCatching { startActivity(it) } }
+            return
+        }
+        // Anything else goes to the AI brain, which can plan multiple steps.
+        askBrain(candidates.firstOrNull() ?: return)
+    }
+
+    private fun askBrain(text: String) {
+        if (apiKey.isBlank()) {
+            setStatus(getString(R.string.no_api_key))
+            Speaker.say(this, "Please add your API key in settings")
+            return
+        }
+        setStatus(getString(R.string.thinking))
+        AiBrain.ask(this, text) { plan ->
+            if (plan == null) {
+                setStatus(getString(R.string.brain_error))
+                Speaker.say(this, "Sorry, I could not reach my brain right now")
+                return@ask
+            }
+            setStatus(plan.reply)
+            Speaker.say(this, plan.reply)
+            if (plan.steps.isNotEmpty()) ActionExecutor.run(this, plan.steps)
+        }
     }
 
     private fun setStatus(msg: String) { binding.status.text = msg }
