@@ -22,6 +22,9 @@
     <string name="your_name_hint">e.g. Pankaj</string>
     <string name="your_assistant_hint">e.g. Janu Ji</string>
     <string name="save_continue">Save &amp; Continue</string>
+    <string name="api_key_label">AI Brain Key (optional, free)</string>
+    <string name="api_key_hint">Paste your Gemini or Claude key</string>
+    <string name="api_key_help">Get a FREE key at aistudio.google.com/apikey — no card needed. Leave empty for basic commands only.</string>
     <string name="fill_both">Please fill both fields</string>
 
     <!-- Toggles -->
@@ -45,4 +48,8 @@
     <string name="status_no_speech">Speech recognition is not available</string>
     <string name="status_grant_overlay">Please allow display over other apps</string>
     <string name="status_bubble_on">Floating button is now on</string>
+    <string name="thinking">Thinking…</string>
+    <string name="brain_error">Could not reach the AI. Check key or internet.</string>
+    <string name="no_api_key">No API key. Add one in Settings.</string>
+    <string name="settings">Settings</string>
 </resources>
