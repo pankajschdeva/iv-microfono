@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IV Micrófono</string>
+    <string name="greeting_hello">Hello,</string>
+    <string name="greeting_name">There</string>
+    <string name="tap_to_speak">Tap the mic and speak</string>
+    <string name="transcript_hint">Your words will appear here…</string>
+
+    <string name="action_ask">Ask</string>
+    <string name="action_open">Open</string>
+    <string name="action_call">Call</string>
+    <string name="action_search">Search</string>
+
+    <string name="enable_bubble">Floating button</string>
+    <string name="enable_accessibility">Enable full control</string>
+
+    <!-- Onboarding -->
+    <string name="welcome_title">Welcome to IV Micrófono</string>
+    <string name="welcome_sub">Set up your assistant</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_assistant_name">Your Assistant Name</string>
+    <string name="your_name_hint">e.g. Pankaj</string>
+    <string name="your_assistant_hint">e.g. Janu Ji</string>
+    <string name="save_continue">Save &amp; Continue</string>
+    <string name="fill_both">Please fill both fields</string>
+
+    <!-- Toggles -->
+    <string name="voice_on">Voice: ON</string>
+    <string name="voice_off">Voice: OFF</string>
+    <string name="bubble_on">Bubble: ON</string>
+    <string name="bubble_off">Bubble: OFF</string>
+    <string name="voice_is_off">Voice is turned off</string>
+
+    <!-- Accessibility -->
+    <string name="acc_on">Full control: ACTIVE</string>
+    <string name="acc_off">Full control: OFF — tap to enable</string>
+    <string name="acc_hint">Find "IV Micrófono" in the list and turn it ON</string>
+    <string name="acc_description">Lets IV Micrófono tap, scroll and type inside other apps so it can carry out your voice commands (like sending WhatsApp messages or scrolling reels).</string>
+
+    <!-- Status -->
+    <string name="status_idle">Ready</string>
+    <string name="status_listening">Listening…</string>
+    <string name="status_try_again">Sorry, please try again</string>
+    <string name="status_need_mic">Microphone permission is required</string>
+    <string name="status_no_speech">Speech recognition is not available</string>
+    <string name="status_grant_overlay">Please allow display over other apps</string>
+    <string name="status_bubble_on">Floating button is now on</string>
+</resources>

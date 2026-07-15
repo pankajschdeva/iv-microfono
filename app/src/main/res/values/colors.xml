@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#0B0A0F</color>
+    <color name="bg_card">#16151C</color>
+    <color name="bg_pill">#211F2B</color>
+    <color name="purple_top">#7C4DCB</color>
+    <color name="purple_glow">#5B2E9E</color>
+    <color name="accent">#B98BFF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_muted">#9A93A8</color>
+    <color name="mic_active">#B98BFF</color>
+</resources>

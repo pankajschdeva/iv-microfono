@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_gradient"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/greeting_hello"
+                    android:textColor="@color/text_muted"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/greetingName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/greeting_name"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/action_circle"
+                android:padding="11dp"
+                android:src="@android:drawable/ic_menu_search"
+                android:contentDescription="@string/action_search" />
+        </LinearLayout>
+
+        <!-- Toggles row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/voiceToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/bg_pill"
+                android:text="@string/voice_on"
+                android:textColor="@color/text_primary"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bubbleToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="@color/bg_pill"
+                android:text="@string/bubble_off"
+                android:textColor="@color/text_primary"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <!-- Mic -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/tap_to_speak"
+            android:textColor="@color/text_muted"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/micButton"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/mic_selector"
+            android:padding="52dp"
+            android:src="@android:drawable/ic_btn_speak_now"
+            android:contentDescription="@string/tap_to_speak"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/status_idle"
+            android:textColor="@color/accent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/transcript"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/transcript_hint"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp" />
+
+        <!-- Quick actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="28dp"
+            android:weightSum="4">
+
+            <LinearLayout android:id="@+id/actionAsk"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center" android:clickable="true" android:focusable="true">
+                <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                    android:background="@drawable/action_circle" android:padding="16dp"
+                    android:src="@android:drawable/ic_btn_speak_now"
+                    android:contentDescription="@string/action_ask" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/action_ask"
+                    android:textColor="@color/text_muted" android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/actionOpen"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center" android:clickable="true" android:focusable="true">
+                <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                    android:background="@drawable/action_circle" android:padding="16dp"
+                    android:src="@android:drawable/ic_menu_view"
+                    android:contentDescription="@string/action_open" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/action_open"
+                    android:textColor="@color/text_muted" android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/actionCall"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center" android:clickable="true" android:focusable="true">
+                <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                    android:background="@drawable/action_circle" android:padding="16dp"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:contentDescription="@string/action_call" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/action_call"
+                    android:textColor="@color/text_muted" android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/actionSearch"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center" android:clickable="true" android:focusable="true">
+                <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                    android:background="@drawable/action_circle" android:padding="16dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    android:contentDescription="@string/action_search" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/action_search"
+                    android:textColor="@color/text_muted" android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Full control (Accessibility) card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="22dp"
+            android:layout_marginTop="28dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enable_accessibility"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/accStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/acc_off"
+                android:textColor="@color/text_muted"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/enableAccessibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/accent"
+                android:text="@string/enable_accessibility"
+                android:textColor="#0B0A0F"
+                android:textStyle="bold"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/enableBubble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/bg_pill"
+                android:text="@string/enable_bubble"
+                android:textColor="@color/text_primary"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
