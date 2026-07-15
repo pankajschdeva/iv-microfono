@@ -87,6 +87,38 @@
             android:inputType="textPersonName"
             android:maxLines="1" />
 
+        <!-- API key -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/api_key_label"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/apiKeyInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/pill_bg"
+            android:hint="@string/api_key_hint"
+            android:textColorHint="@color/text_muted"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/api_key_help"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp" />
+
         <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
