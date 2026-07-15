@@ -126,8 +126,11 @@ class MainActivity : AppCompatActivity() {
         val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
             putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-            putExtra(RecognizerIntent.EXTRA_LANGUAGE, "hi-IN")
+            // en-IN keeps the output in Latin script and still copes with
+            // Hinglish. We also ask for several alternatives and try them all.
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-IN")
             putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-IN")
+            putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 5)
             putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
         }
         setStatus(getString(R.string.status_listening))
@@ -152,15 +155,15 @@ class MainActivity : AppCompatActivity() {
         override fun onEvent(eventType: Int, params: Bundle?) {}
         override fun onResults(results: Bundle?) {
             binding.micButton.isActivated = false
-            val t = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull()
-            if (t.isNullOrBlank()) { setStatus(getString(R.string.status_try_again)); return }
-            binding.transcript.text = t
-            handleCommand(t)
+            val all = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+            if (all.isNullOrEmpty()) { setStatus(getString(R.string.status_try_again)); return }
+            binding.transcript.text = all[0]
+            handleCommand(all)
         }
     }
 
-    private fun handleCommand(text: String) {
-        val reply = commands.process(text)
+    private fun handleCommand(candidates: List<String>) {
+        val reply = commands.processAll(candidates)
         setStatus(reply.spoken)
         Speaker.say(this, reply.spoken)
         reply.action?.let { runCatching { startActivity(it) } }
